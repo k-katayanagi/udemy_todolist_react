@@ -10,26 +10,30 @@ export const Todo = () => {
     const [incompleateTodos,setincompleateTodos] = useState([]);
     const [compleateTodos,setcompleateTodos] = useState([]);
 
-    const onChangeText = (event) =>setTodoText(event.target.value);{/* 引数はなんでもいいが、基本event どの要素でイベントが発生したかがこの「event]に含まれる（この場合はinput）などです*/}
+    const onChangeText = (event) =>setTodoText(event.target.value);/* 引数はなんでもいいが、基本event どの要素でイベントが発生したかがこの「event]に含まれる（この場合はinput）などです*/
     const onClickAdd = () =>{
         if(todoText === "") return ;
         const newTodos = [...incompleateTodos,todoText];
-        setincompleateTodos(newTodos);{/*未完了のTODOの配列を更新*/}
+        setincompleateTodos(newTodos);/*未完了のTODOの配列を更新*/
         setTodoText("");
     };
 
     const onClickDelete = (index) =>{
         
-        const newTodos = [...incompleateTodos];{/*set関数に渡すにはまったく新しい配列を用意してあげる*/}
+        const newTodos = [...incompleateTodos];/*set関数に渡すにはまったく新しい配列を用意してあげる*/
         newTodos.splice(index,1);
-        setincompleateTodos(newTodos);{/*未完了のTODOの配列を更新*/}
+        setincompleateTodos(newTodos);/*未完了のTODOの配列を更新*/
     };
+
+    // const onClickDelete = (index) => {
+    //     setincompleateTodos(incompleateTodos.filter((_, i) => i !== index));
+    // };(この書き方でもOK)
 
     const onClickComplete = (index) =>{
         const newincompleateTodos = [...incompleateTodos];
         newincompleateTodos.splice(index,1);
         const newCompleteTodos =[...compleateTodos,incompleateTodos[index]]
-        setincompleateTodos(newincompleateTodos);{/*未完了のTODOの配列を更新*/}
+        setincompleateTodos(newincompleateTodos);/*未完了のTODOの配列を更新*/
         setcompleateTodos(newCompleteTodos);
     };
 
